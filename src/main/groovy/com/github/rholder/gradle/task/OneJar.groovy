@@ -26,12 +26,12 @@ import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.InputFiles
 import org.gradle.api.tasks.Internal
+import org.gradle.api.tasks.Nested
 import org.gradle.api.tasks.bundling.Jar
 
 class OneJar extends Jar {
 
-    @org.gradle.api.tasks.Optional
-    @InputDirectory
+    @Internal
     File oneJarBuildDir
 
     @Internal
@@ -39,12 +39,14 @@ class OneJar extends Jar {
 
     @Input
     boolean useStable = true
+
     @Input
     boolean mergeManifestFromJar = false
 
     // TODO expose One-Jar-Expand functionality
     @Input
     boolean showExpand = false
+
     @Input
     boolean confirmExpand = false
 
@@ -55,19 +57,19 @@ class OneJar extends Jar {
     String mainClass
 
     @org.gradle.api.tasks.Optional
-    @Input
+    @InputFile
     File manifestFile
 
     @org.gradle.api.tasks.Optional
-    @InputFile
+    @Nested
     Jar baseJar
 
     @org.gradle.api.tasks.Optional
-    @Input
+    @InputFiles
     Configuration targetConfiguration
 
     @org.gradle.api.tasks.Optional
-    @Input
+    @InputFiles
     Configuration oneJarConfiguration
 
     @org.gradle.api.tasks.Optional
@@ -97,7 +99,7 @@ class OneJar extends Jar {
 
         // use runtime configuration if none is specified
         if (!targetConfiguration) {
-            targetConfiguration = project.configurations.runtimeOnly
+            targetConfiguration = project.configurations.runtimeClasspath
         }
 
         // set standalone as classifier if unspecified
