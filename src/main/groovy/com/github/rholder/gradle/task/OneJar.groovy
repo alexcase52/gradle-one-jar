@@ -30,8 +30,10 @@ import org.gradle.api.tasks.bundling.Jar
 
 class OneJar extends Jar {
 
+    @org.gradle.api.tasks.Optional
     @InputDirectory
     File oneJarBuildDir
+
     @Internal
     Logger logger
 
@@ -51,18 +53,32 @@ class OneJar extends Jar {
 
     @Input
     String mainClass
+
+    @org.gradle.api.tasks.Optional
     @Input
     File manifestFile
+
+    @org.gradle.api.tasks.Optional
     @InputFile
     Jar baseJar
+
+    @org.gradle.api.tasks.Optional
     @Input
     Configuration targetConfiguration
+
+    @org.gradle.api.tasks.Optional
     @Input
     Configuration oneJarConfiguration
+
+    @org.gradle.api.tasks.Optional
     @InputFiles
     FileCollection binLib
+
+    @org.gradle.api.tasks.Optional
     @InputDirectory
     File binDir
+
+    @org.gradle.api.tasks.Optional
     @InputDirectory
     File additionalDir
 
