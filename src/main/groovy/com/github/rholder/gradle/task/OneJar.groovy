@@ -22,13 +22,15 @@ import org.gradle.api.file.FileCollection
 import org.gradle.api.java.archives.Manifest
 import org.gradle.api.logging.Logger
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.InputFile
+import org.gradle.api.tasks.InputFiles
 import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.bundling.Jar
 
 class OneJar extends Jar {
 
-    @InputFile
+    @InputDirectory
     File oneJarBuildDir
     @Internal
     Logger logger
@@ -51,17 +53,17 @@ class OneJar extends Jar {
     String mainClass
     @Input
     File manifestFile
-    @Input
+    @InputFile
     Jar baseJar
     @Input
     Configuration targetConfiguration
     @Input
     Configuration oneJarConfiguration
-    @InputFile
+    @InputFiles
     FileCollection binLib
-    @InputFile
+    @InputDirectory
     File binDir
-    @InputFile
+    @InputDirectory
     File additionalDir
 
     OneJar() {
