@@ -99,7 +99,7 @@ class OneJar extends Jar {
 
         // use runtime configuration if none is specified
         if (!targetConfiguration) {
-            targetConfiguration = project.configurations.runtimeOnly
+            targetConfiguration = project.configurations.runtimeClasspath
         }
 
         // set standalone as classifier if unspecified
