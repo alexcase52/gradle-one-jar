@@ -21,29 +21,47 @@ import org.gradle.api.artifacts.Configuration
 import org.gradle.api.file.FileCollection
 import org.gradle.api.java.archives.Manifest
 import org.gradle.api.logging.Logger
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputFile
+import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.bundling.Jar
 
 class OneJar extends Jar {
 
+    @InputFile
     File oneJarBuildDir
+    @Internal
     Logger logger
 
+    @Input
     boolean useStable = true
+    @Input
     boolean mergeManifestFromJar = false
 
     // TODO expose One-Jar-Expand functionality
+    @Input
     boolean showExpand = false
+    @Input
     boolean confirmExpand = false
 
+    @Input
     boolean noClassifier = false
 
+    @Input
     String mainClass
+    @Input
     File manifestFile
+    @Input
     Jar baseJar
+    @Input
     Configuration targetConfiguration
+    @Input
     Configuration oneJarConfiguration
+    @InputFile
     FileCollection binLib
+    @InputFile
     File binDir
+    @InputFile
     File additionalDir
 
     OneJar() {
