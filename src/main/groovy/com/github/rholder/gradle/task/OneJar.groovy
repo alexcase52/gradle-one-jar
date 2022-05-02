@@ -65,11 +65,11 @@ class OneJar extends Jar {
     Jar baseJar
 
     @org.gradle.api.tasks.Optional
-    @Nested
+    @InputFiles
     Configuration targetConfiguration
 
     @org.gradle.api.tasks.Optional
-    @Nested
+    @InputFiles
     Configuration oneJarConfiguration
 
     @org.gradle.api.tasks.Optional
