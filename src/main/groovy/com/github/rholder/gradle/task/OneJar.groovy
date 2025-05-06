@@ -103,7 +103,7 @@ class OneJar extends Jar {
         }
 
         // set standalone as classifier if unspecified
-        if (!noClassifier && (!archiveClassifier || archiveClassifier.isEmpty())) {
+        if (!noClassifier && (!archiveClassifier.get() || archiveClassifier.get().isEmpty())) {
             archiveClassifier.set('standalone')
         }
 
