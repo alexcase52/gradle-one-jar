@@ -18,12 +18,12 @@ dependencies {
 
 task sourcesJar(type: Jar) {
     from sourceSets.main.allSource
-    classifier = 'sources'
+    archiveClassifier.set('sources')
 }
 
 task groovydocJar(type: Jar, dependsOn: 'groovydoc') {
     from groovydoc.destinationDir
-    classifier = 'javadoc'
+    archiveClassifier.set('javadoc')
 }
 
 task exportJavadoc(type: Copy, dependsOn: 'groovydoc') {

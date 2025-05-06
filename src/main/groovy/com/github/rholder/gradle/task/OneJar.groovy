@@ -103,13 +103,13 @@ class OneJar extends Jar {
         }
 
         // set standalone as classifier if unspecified
-        if (!noClassifier && (!classifier || classifier.isEmpty())) {
-            classifier = 'standalone'
+        if (!noClassifier && (!archiveClassifier || archiveClassifier.isEmpty())) {
+            archiveClassifier.set('standalone')
         }
 
         dependsOn = [baseJar]
 
-        inputs.files([baseJar.getArchivePath().absoluteFile])
+        inputs.files([baseJar.getArchiveFile().get().asFile])
 
         doFirst {
             if (!mainClass) {
@@ -121,7 +121,7 @@ class OneJar extends Jar {
             unpackOneJarBoot(oneJarBuildDir.absolutePath)
 
             // create main/main.jar from the current project's jar
-            ant.copy(file: baseJar.archivePath.absolutePath,
+            ant.copy(file: baseJar.archiveFile.get().asFile,
                     toFile: new File(oneJarBuildDir, 'main/main.jar'))
 
             // copy /lib/* from the current project's runtime dependencies
