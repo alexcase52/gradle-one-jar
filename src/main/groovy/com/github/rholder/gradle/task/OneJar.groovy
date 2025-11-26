@@ -29,7 +29,7 @@ import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.Nested
 import org.gradle.api.tasks.bundling.Jar
 
-class OneJar extends Jar {
+abstract class OneJar extends Jar {
 
     @Internal
     File oneJarBuildDir

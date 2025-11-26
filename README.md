@@ -35,7 +35,7 @@ First, you'll want to add the plugin to your build, as in:
 
 ```groovy
 plugins {
-    id "com.github.alexcase52.gradle-one-jar" version "1.4.0"
+    id "com.github.alexcase52.gradle-one-jar" version "1.6.0"
 }
 ```
 
@@ -50,7 +50,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.github.alexcase52:gradle-one-jar:1.4.0'
+        classpath 'com.github.alexcase52:gradle-one-jar:1.6.0'
     }
 }
 ```
