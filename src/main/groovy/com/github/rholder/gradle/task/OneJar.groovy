@@ -212,7 +212,7 @@ abstract class OneJar extends Jar {
             targetManifestFile = writeOneJarManifestFile(manifest)
         }
 
-        File finalJarFile = destinationDirectory.file(getArchiveName()).get().asFile
+        File finalJarFile = destinationDirectory.file(archiveFileName.get()).get().asFile
         ant.jar(destfile: finalJarFile,
                 basedir: oneJarBuildDir.absolutePath,
                 manifest: targetManifestFile.absolutePath)
