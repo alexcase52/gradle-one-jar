@@ -87,7 +87,7 @@ class OneJar extends Jar {
     OneJar() {
 
         logger = project.logger
-        oneJarBuildDir = project.layout.buildDirectory.dir( "one-jar-build").get().asFile
+        oneJarBuildDir = new File(project.buildDir, "one-jar-build")
         logger.debug("Created " + oneJarBuildDir.absolutePath)
 
         description = "Create a One-JAR runnable archive from the current project using a given main Class."
@@ -212,7 +212,7 @@ class OneJar extends Jar {
             targetManifestFile = writeOneJarManifestFile(manifest)
         }
 
-        File finalJarFile = destinationDirectory.file(getArchiveName()).get().asFile
+        File finalJarFile = new File(jar.destinationDir, getArchiveName())
         ant.jar(destfile: finalJarFile,
                 basedir: oneJarBuildDir.absolutePath,
                 manifest: targetManifestFile.absolutePath)
