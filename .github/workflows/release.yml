@@ -9,6 +9,11 @@ jobs:
   publish:
     name: Publish release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
+      packages: read|write|none
     steps:
       - name: Checkout
         uses: actions/checkout@v4
